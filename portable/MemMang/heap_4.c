@@ -112,10 +112,13 @@ PRIVILEGED_DATA static size_t xBlockAllocatedBit = 0;
 
 /*-----------------------------------------------------------*/
 
-void * pvPortMalloc( size_t xWantedSize )
+void * pvPortMalloc1( size_t xWantedSize, char * file, int line )
 {
     BlockLink_t * pxBlock, * pxPreviousBlock, * pxNewBlockLink;
     void * pvReturn = NULL;
+    
+    (void) file;
+    (void) line;
 
     vTaskSuspendAll();
     {
@@ -257,6 +260,8 @@ void * pvPortMalloc( size_t xWantedSize )
         {
             if( pvReturn == NULL )
             {
+                configPRINTF( ( "Malloc failed %s, %d\r\n", file, line ) );
+                
                 extern void vApplicationMallocFailedHook( void );
                 vApplicationMallocFailedHook();
             }
