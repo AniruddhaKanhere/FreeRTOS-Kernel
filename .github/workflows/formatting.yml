@@ -20,6 +20,6 @@ jobs:
     steps:
     - name: Apply Formatting Fix
       id: check-formatting
-      uses: FreeRTOS/CI-CD-Github-Actions/formatting-bot@e82d91732e219f799e2d5f319dae3459cc9619a2
+      uses: FreeRTOS/CI-CD-Github-Actions/formatting-bot@main
       with:
         exclude-dirs: portable
