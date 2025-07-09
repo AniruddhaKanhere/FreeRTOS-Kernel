@@ -96,14 +96,22 @@ jobs:
 
       - name: Get dir struct
         run: |
-          ls ./tools/.github/scripts
+          ls -al ./tools/.github/scripts
           ls  ./
+          pwd
+
+      - name: Get absolute path
+        id: get-path
+        run: |
+          ABSOLUTE_PATH="${GITHUB_WORKSPACE}/tools/.github/scripts/FreeRTOS-KernelV${{ github.event.inputs.version_number }}.zip"
+          echo "ARTIFACT_PATH=$ABSOLUTE_PATH" >> $GITHUB_OUTPUT
+
       - name: Backup Release Asset
         uses: FreeRTOS/CI-CD-Github-Actions/artifact-backup@main
         with:
           # This is dependent on the release script putting this zip file
           # in this exact location.
-          artifact_path: ./tools/.github/scripts/FreeRTOS-KernelV${{ github.event.inputs.version_number }}.zip
+          artifact_path: ${{ steps.get-path.outputs.ARTIFACT_PATH }}
           release_tag: ${{ github.event.inputs.version_number }}
 
       - name: Cleanup
