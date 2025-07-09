@@ -94,6 +94,10 @@ jobs:
           ./tools/.github/scripts/release.py "$REPO_OWNER" --kernel-repo-path=local_kernel --kernel-commit="$COMMIT_SHA_2" --new-kernel-version="$VERSION_NUMBER" --new-kernel-main-br-version="$MAIN_BR_VERSION_NUMBER"
           exit $?
 
+      - name: Get dir struct
+        run: |
+          ls ./tools/.github/scripts
+          ls  ./
       - name: Backup Release Asset
         uses: FreeRTOS/CI-CD-Github-Actions/artifact-backup@main
         with:
