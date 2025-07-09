@@ -20,6 +20,7 @@ jobs:
   release-packager:
     permissions:
       id-token: write
+      contents: write
     name: Release Packager
     runs-on: ubuntu-latest
     steps:
