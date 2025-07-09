@@ -53,10 +53,10 @@
  * The tskKERNEL_VERSION_MAJOR, tskKERNEL_VERSION_MINOR, tskKERNEL_VERSION_BUILD
  * values will reflect the last released version number.
  */
-#define tskKERNEL_VERSION_NUMBER                      "V11.1.0+"
-#define tskKERNEL_VERSION_MAJOR                       11
-#define tskKERNEL_VERSION_MINOR                       1
-#define tskKERNEL_VERSION_BUILD                       0
+#define tskKERNEL_VERSION_NUMBER                      "V10.4.4234"
+#define tskKERNEL_VERSION_MAJOR                       10
+#define tskKERNEL_VERSION_MINOR                       4
+#define tskKERNEL_VERSION_BUILD                       4234
 
 /* MPU region parameters passed in ulParameters
  * of MemoryRegion_t struct. */
