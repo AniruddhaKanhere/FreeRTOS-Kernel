@@ -73,6 +73,13 @@ jobs:
           ./tools/.github/scripts/update_src_version.py FreeRTOS --kernel-repo-path=local_kernel --kernel-commit="$COMMIT_SHA_1" --new-kernel-version="$VERSION_NUMBER" --new-kernel-main-br-version="$MAIN_BR_VERSION_NUMBER"
           exit $?
 
+      - name: commit SBOM file
+        env:
+          VERSION_NUMBER: ${{ github.event.inputs.version_number }}
+        working-directory: ./local_kernel
+        run: |
+          echo "COMMIT_SHA_2=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
       - name: Release
         env:
           VERSION_NUMBER: ${{ github.event.inputs.version_number }}
